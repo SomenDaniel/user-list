@@ -1,7 +1,7 @@
 import React from "react";
-import { useState } from "react";
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import User from "./User";
+import { Link } from "react-router-dom";
 
 function MainPage() {
   const [users, setUsers] = useState([]);
@@ -12,6 +12,46 @@ function MainPage() {
   if (currentPage === 1) {
     localStorage.setItem("page", `1`);
   }
+
+  // ezzel sikerült.....
+  // sikerül megváltoztatni a státuszt, és az adatokat is sikerült módosítani. de errort kapok vissza.
+  const testUpdate = () => {
+    fetch("https://assessment-users-backend.herokuapp.com/users/250", {
+      method: "put",
+      body: JSON.stringify({
+        created_at: "2022-03-06T12:49:46.085Z",
+        first_name: "mr",
+        id: 250,
+        last_name: "wenger",
+        status: "active",
+      }),
+      headers: {
+        "Content-type": "application/json",
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+      });
+  };
+
+  const testcreate = () => {
+    fetch("https://assessment-users-backend.herokuapp.com/users", {
+      method: "POST",
+      body: JSON.stringify({
+        first_name: "szia",
+        last_name: "uram",
+        status: "locked",
+      }),
+      headers: {
+        "Content-type": "application/json",
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+      });
+  };
 
   const loadUsers = () => {
     fetch("https://assessment-users-backend.herokuapp.com/users", {
@@ -51,14 +91,15 @@ function MainPage() {
       window.location.reload(false);
     }
   }
-
   function relo() {
     localStorage.removeItem("page");
   }
-
   return (
     <>
-      <h1>hello</h1>
+      <button>
+        <Link to="/new">New</Link>
+      </button>
+      <button onClick={testUpdate}>test</button>
       <button onClick={previouspage}>previouspage</button>
       <button onClick={nextpage}>nextpage</button>
       <button onClick={relo}>reload</button>
@@ -73,11 +114,11 @@ function MainPage() {
                 firstName={user.first_name}
                 lastName={user.last_name}
                 createdAt={user.created_at}
+                data={user}
               />
             ))
         )}
       </div>
-      <p>paginated</p>
     </>
   );
 }
