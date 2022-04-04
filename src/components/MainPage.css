@@ -1,0 +1,68 @@
+.homeContainer {
+  position: absolute;
+  background: linear-gradient(45deg, #f8f9fa, #ced4da);
+  width: 100%;
+  height: fit-content;
+}
+
+.users {
+  height: fit-content;
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.paginationContainer {
+  display: grid;
+  grid-template-columns: 45% 10% 45%;
+  grid-template-rows: 1;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.paginationContainer button {
+  width: 100px;
+  height: 30px;
+  align-self: center;
+  background: linear-gradient(45deg, #99d98c, #34a0a4);
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.658) 0px 3px 8px;
+  border: none;
+  cursor: pointer;
+}
+
+.paginationContainer p {
+  align-self: center;
+  justify-self: center;
+}
+
+.paginationContainer :first-child {
+  justify-self: end;
+}
+
+.header {
+  display: grid;
+  grid-template-columns: 80% 20%;
+  grid-template-rows: 1;
+}
+
+.header h1 {
+  margin-left: 30px;
+}
+
+.header button {
+  width: 100px;
+  height: 30px;
+  align-self: center;
+  justify-self: center;
+  background: linear-gradient(45deg, #99d98c, #34a0a4);
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.658) 0px 3px 8px;
+  border: none;
+  cursor: pointer;
+}
+
+.toNew {
+  color: black;
+  text-decoration: none;
+}
