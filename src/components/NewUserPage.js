@@ -1,5 +1,7 @@
 import React from "react";
 import { useState } from "react";
+import { Link } from "react-router-dom";
+import "./NewUserPage.css";
 
 function NewUserPage() {
   const [firstName, setFirstName] = useState("");
@@ -33,16 +35,38 @@ function NewUserPage() {
   };
 
   return (
-    <>
-      <h1>hello</h1>
-      <div>
-        <label for="fname">First name:</label>
-        <input onChange={changeFirstName} for="fname" type="text"></input>
-        <label for="lname">Last name:</label>
-        <input onChange={changeLastName} for="lname" type="text"></input>
-        <button onClick={createUser}>Create</button>
+    <div className="creatorPageContainer">
+      <h1 className="welcomeMessage">Let's create a new user!</h1>
+      <div className="createContainer">
+        <div className="inputContainer">
+          <input
+            onChange={changeFirstName}
+            for="fname"
+            type="text"
+            placeholder="First name:"
+          ></input>
+        </div>
+        <div className="inputContainer">
+          <input
+            onChange={changeLastName}
+            for="lname"
+            type="text"
+            placeholder="Last name:"
+          ></input>
+        </div>
+
+        <div className="editButtons">
+          <button className="editButton">
+            <Link className="toHomepage" to="/">
+              Back
+            </Link>
+          </button>
+          <button className="editButton" onClick={createUser}>
+            Create
+          </button>
+        </div>
       </div>
-    </>
+    </div>
   );
 }
 
