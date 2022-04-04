@@ -1,0 +1,69 @@
+.editPageContainer {
+  position: absolute;
+  background: linear-gradient(45deg, #f8f9fa, #ced4da);
+  width: 100%;
+  height: 100%;
+}
+
+.editButton {
+  border: 1.5px solid black;
+  border-radius: 5px;
+  padding: 4px;
+  background-color: rgba(0, 0, 0, 0);
+  width: 100px;
+  cursor: pointer;
+}
+
+.editButtons :first-child {
+  margin-right: 50px;
+}
+
+.editButtons :hover {
+  background: linear-gradient(45deg, #99d98c, #34a0a4);
+}
+
+.editToHomepage {
+  color: black;
+  text-decoration: none;
+  margin-right: 0 !important;
+}
+
+.editTitle {
+  text-align: center;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.editContainer {
+  width: 75%;
+  margin-left: auto;
+  margin-right: auto;
+  display: grid;
+  grid-template-columns: 1;
+  grid-template-rows: 33% 33% 33%;
+}
+
+.inputContainer {
+  text-align: center;
+}
+
+.editButtons {
+  margin-top: 50px;
+  width: 400px;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+label {
+  font-size: 20px;
+}
+
+input {
+  border: 2px solid black;
+  background-color: rgba(0, 0, 0, 0);
+  border-radius: 4px;
+  width: 400px;
+  height: 25px;
+  margin-top: 50px;
+}
