@@ -2,6 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import User from "./User";
 import { Link } from "react-router-dom";
+import "./MainPage.css";
 
 function MainPage() {
   const [users, setUsers] = useState([]);
@@ -94,16 +95,27 @@ function MainPage() {
   function relo() {
     localStorage.removeItem("page");
   }
+  console.log(users);
   return (
-    <>
-      <button>
-        <Link to="/new">New</Link>
-      </button>
-      <button onClick={testUpdate}>test</button>
-      <button onClick={previouspage}>previouspage</button>
-      <button onClick={nextpage}>nextpage</button>
-      <button onClick={relo}>reload</button>
-      <div>
+    <div className="homeContainer">
+      <div className="header">
+        <h1>User List</h1>
+        <button>
+          <Link className="toNew" to="/new">
+            New
+          </Link>
+        </button>
+      </div>
+
+      {/* <button onClick={testUpdate}>test</button>
+
+      <button onClick={relo}>reload</button> */}
+      <div className="paginationContainer">
+        <button onClick={previouspage}>previouspage</button>
+        <p>{currentPage}</p>
+        <button onClick={nextpage}>nextpage</button>
+      </div>
+      <div className="users">
         {loaded === false ? (
           <h1>cs</h1>
         ) : (
@@ -119,7 +131,12 @@ function MainPage() {
             ))
         )}
       </div>
-    </>
+      <div className="paginationContainer">
+        <button onClick={previouspage}>previouspage</button>
+        <p>{currentPage}</p>
+        <button onClick={nextpage}>nextpage</button>
+      </div>
+    </div>
   );
 }
 
