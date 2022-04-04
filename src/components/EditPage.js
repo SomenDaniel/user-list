@@ -1,6 +1,8 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import "./EditPage.css";
 
 function EditPage() {
   const { id } = useParams();
@@ -56,33 +58,45 @@ function EditPage() {
   console.log(user);
 
   return (
-    <>
-      <h1>edit</h1>
-      <button onClick={setUser}>check</button>
-      <div>
+    <div className="editPageContainer">
+      <h1 className="editTitle">
+        Edit user: {`${loaded === false ? "" : user.first_name}`}
+      </h1>
+      <div className="editContainer">
         {loaded === false ? (
           <h1>loading</h1>
         ) : (
           <div>
-            <label for="fname">First name:</label>
-            <input
-              onChange={changeFirstName}
-              for="fname"
-              type="text"
-              placeholder={`${user.first_name}`}
-            ></input>
-            <label for="lname">Last name:</label>
-            <input
-              onChange={changeLastName}
-              for="lname"
-              type="text"
-              placeholder={`${user.last_name}`}
-            ></input>
-            <button onClick={editUser}>Edit</button>
+            <div className="inputContainer">
+              <input
+                onChange={changeFirstName}
+                for="fname"
+                type="text"
+                placeholder="First name:"
+              ></input>
+            </div>
+            <div className="inputContainer">
+              <input
+                onChange={changeLastName}
+                for="lname"
+                type="text"
+                placeholder="Last name:"
+              ></input>
+            </div>
+            <div className="editButtons">
+              <button className="editButton">
+                <Link className="editToHomepage" to="/">
+                  Back
+                </Link>
+              </button>
+              <button className="editButton" onClick={editUser}>
+                Edit
+              </button>
+            </div>
           </div>
         )}
       </div>
-    </>
+    </div>
   );
 }
 
