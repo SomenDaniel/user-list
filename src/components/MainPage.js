@@ -14,6 +14,7 @@ function MainPage() {
     localStorage.setItem("page", `1`);
   }
 
+  // getting the users
   const loadUsers = () => {
     fetch("https://assessment-users-backend.herokuapp.com/users", {
       headers: {
@@ -27,10 +28,12 @@ function MainPage() {
       });
   };
 
+  // load the users when the page starts.
   useEffect(() => {
     loadUsers();
   }, []);
 
+  // pagination functions
   function nextPage() {
     currentPage = Number(localStorage.getItem("page"));
     if (Math.trunc(users.length / 10) + 1 === currentPage) {
@@ -67,6 +70,7 @@ function MainPage() {
         <button onClick={nextPage}>next page</button>
       </div>
       <div className="users">
+        {/* Creating a user card for every user.*/}
         {loaded === false ? (
           <h1 className="loading">Loading...</h1>
         ) : (

@@ -13,10 +13,12 @@ function EditPage() {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
 
+  // Displaying the correct user.
   useEffect(() => {
     getUser();
   }, []);
 
+  // Input field event listeners.
   const changeFirstName = (event) => {
     setFirstName(event.target.value);
   };
@@ -24,6 +26,7 @@ function EditPage() {
     setLastName(event.target.value);
   };
 
+  // Getting the correct user.
   const getUser = () => {
     fetch(`https://assessment-users-backend.herokuapp.com/users/${id}`)
       .then((response) => response.json())
@@ -33,6 +36,7 @@ function EditPage() {
       });
   };
 
+  // User editing function.
   const editUser = () => {
     if (firstName === "" || lastName === "") {
       setError("You cannot leave input fields blank!");

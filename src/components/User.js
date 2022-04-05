@@ -7,6 +7,7 @@ function User(props) {
   let userData = props.data;
   const [message, setMessage] = useState("");
 
+  // changing the user status.
   const changeStatus = () => {
     if (props.data.status === "active") {
       fetch(

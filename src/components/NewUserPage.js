@@ -9,6 +9,7 @@ function NewUserPage() {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
 
+  // Input field event listeners.
   const changeFirstName = (event) => {
     setFirstName(event.target.value);
   };
@@ -16,6 +17,7 @@ function NewUserPage() {
     setLastName(event.target.value);
   };
 
+  // user creating function.
   const createUser = () => {
     if (firstName === "" || lastName === "") {
       setError("You cannot leave input fields blank!");
