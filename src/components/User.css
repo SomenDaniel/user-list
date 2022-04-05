@@ -28,6 +28,7 @@
   padding: 4px;
   background-color: #ced4da;
   cursor: pointer;
+  font-weight: bold;
 }
 
 .userLink {
@@ -48,4 +49,20 @@
   bottom: 35px;
   text-align: center;
   width: 100%;
+}
+
+@media only screen and (max-width: 600px) {
+  .userCard h1 {
+    font-size: 20px;
+  }
+
+  .editMessage {
+    font-size: 8px;
+    bottom: 50px;
+    font-weight: bold;
+  }
+
+  .userActions button {
+    font-size: 10px;
+  }
 }

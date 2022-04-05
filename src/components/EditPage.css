@@ -14,6 +14,7 @@
   box-shadow: rgba(0, 0, 0, 0.658) 0px 3px 8px;
   border: none;
   cursor: pointer;
+  font-weight: bold;
 }
 
 .editButtons :first-child {
@@ -83,4 +84,26 @@ input {
   width: 100%;
   text-align: center;
   height: 70vh;
+}
+
+@media only screen and (max-width: 600px) {
+  .editTitle {
+    font-size: 25px;
+  }
+
+  .error {
+    font-size: 15px;
+  }
+
+  .success {
+    font-size: 15px;
+  }
+
+  input {
+    width: 80%;
+    height: 20px;
+  }
+  .editContainer {
+    width: 100%;
+  }
 }
