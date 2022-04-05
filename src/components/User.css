@@ -1,5 +1,5 @@
 .userCard {
-  width: 50%;
+  width: 100%;
   height: 300px;
   border-radius: 5px;
   background: linear-gradient(45deg, #99d98c, #34a0a4);
@@ -8,6 +8,7 @@
   grid-template-rows: 25% 25% 25% 25%;
   box-shadow: rgba(0, 0, 0, 0.658) 0px 3px 8px;
   margin-top: 20px;
+  position: relative;
 }
 
 .userCard h1 {
@@ -22,16 +23,11 @@
 .userActions button {
   margin-bottom: 10px;
   margin-right: 10px;
-  border: 1.5px solid black;
   border-radius: 5px;
+  border: none;
   padding: 4px;
-  background-color: rgba(0, 0, 0, 0);
-}
-
-.userActions button:hover {
-  background-color: black;
+  background-color: #ced4da;
   cursor: pointer;
-  color: #99d98c;
 }
 
 .userLink {
@@ -39,7 +35,17 @@
   text-decoration: none;
 }
 
-.userLink:hover {
-  color: #99d98c;
+.userActive {
   text-decoration: none;
+}
+
+.userLocked {
+  text-decoration: line-through;
+}
+
+.editMessage {
+  position: absolute;
+  bottom: 35px;
+  text-align: center;
+  width: 100%;
 }

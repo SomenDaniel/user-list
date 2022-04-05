@@ -1,3 +1,7 @@
+* {
+  font-family: "Mulish", sans-serif;
+}
+
 .homeContainer {
   position: absolute;
   background: linear-gradient(45deg, #f8f9fa, #ced4da);
@@ -34,6 +38,7 @@
 .paginationContainer p {
   align-self: center;
   justify-self: center;
+  font-size: 25px;
 }
 
 .paginationContainer :first-child {
@@ -65,4 +70,11 @@
 .toNew {
   color: black;
   text-decoration: none;
+}
+
+.loading {
+  padding-top: 30%;
+  width: 100%;
+  text-align: center;
+  height: 100vh;
 }
