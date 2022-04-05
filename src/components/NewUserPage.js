@@ -6,32 +6,40 @@ import "./NewUserPage.css";
 function NewUserPage() {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
 
   const changeFirstName = (event) => {
     setFirstName(event.target.value);
-    console.log(firstName);
   };
   const changeLastName = (event) => {
     setLastName(event.target.value);
-    console.log(lastName);
   };
 
   const createUser = () => {
-    fetch("https://assessment-users-backend.herokuapp.com/users", {
-      method: "POST",
-      body: JSON.stringify({
-        first_name: firstName,
-        last_name: lastName,
-        status: "active",
-      }),
-      headers: {
-        "Content-type": "application/json",
-      },
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data);
-      });
+    if (firstName === "" || lastName === "") {
+      setError("You cannot leave input fields blank!");
+      setTimeout(function () {
+        setError("");
+      }, 3000);
+    } else {
+      fetch("https://assessment-users-backend.herokuapp.com/users", {
+        method: "POST",
+        body: JSON.stringify({
+          first_name: firstName,
+          last_name: lastName,
+          status: "active",
+        }),
+        headers: {
+          "Content-type": "application/json",
+        },
+      }).then((response) => response.json());
+      setSuccess(`You have successfully created a new user!
+    `);
+      setTimeout(function () {
+        setSuccess("");
+      }, 3000);
+    }
   };
 
   return (
@@ -66,6 +74,8 @@ function NewUserPage() {
           </button>
         </div>
       </div>
+      <h1 className="error">{error}</h1>
+      <h1 className="success">{success}</h1>
     </div>
   );
 }

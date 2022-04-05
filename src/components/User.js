@@ -1,11 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useState } from "react";
 import "./User.css";
 
 function User(props) {
   let userData = props.data;
+  const [message, setMessage] = useState("");
 
-  // need a page refresh after status change.
   const changeStatus = () => {
     if (props.data.status === "active") {
       fetch(
@@ -50,13 +51,28 @@ function User(props) {
           console.log(data);
         });
     }
+    setMessage(
+      "Successfully changed the user status. Refresh the page to see the result."
+    );
   };
-  console.log(userData.status);
+
   return (
     <div className="userCard">
-      <h1>{props.firstName}</h1>
-      <h1>{props.lastName}</h1>
-      <h1>{props.createdAt}</h1>
+      <h1
+        className={props.data.status === "active" ? "userActive" : "userLocked"}
+      >
+        {props.firstName}
+      </h1>
+      <h1
+        className={props.data.status === "active" ? "userActive" : "userLocked"}
+      >
+        {props.lastName}
+      </h1>
+      <h1
+        className={props.data.status === "active" ? "userActive" : "userLocked"}
+      >
+        {props.createdAt.slice(0, 10)}
+      </h1>
       <div className="userActions">
         <button onClick={changeStatus}>Change Status</button>
         <button>
@@ -65,6 +81,7 @@ function User(props) {
           </Link>
         </button>
       </div>
+      <p className="editMessage">{message}</p>
     </div>
   );
 }
