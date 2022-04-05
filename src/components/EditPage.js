@@ -10,20 +10,18 @@ function EditPage() {
   const [loaded, setLoaded] = useState(false);
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
-  console.log(id);
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
 
-  // missing validation and displaying errors but the main functionality is finished.
   useEffect(() => {
     getUser();
   }, []);
 
   const changeFirstName = (event) => {
     setFirstName(event.target.value);
-    console.log(firstName);
   };
   const changeLastName = (event) => {
     setLastName(event.target.value);
-    console.log(lastName);
   };
 
   const getUser = () => {
@@ -36,26 +34,32 @@ function EditPage() {
   };
 
   const editUser = () => {
-    fetch(`https://assessment-users-backend.herokuapp.com/users/${id}`, {
-      method: "put",
-      body: JSON.stringify({
-        created_at: user.created_at,
-        first_name: firstName,
-        id: id,
-        last_name: lastName,
-        status: user.status,
-      }),
-      headers: {
-        "Content-type": "application/json",
-      },
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data);
-      });
+    if (firstName === "" || lastName === "") {
+      setError("You cannot leave input fields blank!");
+      setTimeout(function () {
+        setError("");
+      }, 3000);
+    } else {
+      fetch(`https://assessment-users-backend.herokuapp.com/users/${id}`, {
+        method: "put",
+        body: JSON.stringify({
+          created_at: user.created_at,
+          first_name: firstName,
+          id: id,
+          last_name: lastName,
+          status: user.status,
+        }),
+        headers: {
+          "Content-type": "application/json",
+        },
+      }).then((response) => response.json());
+      setSuccess(`You have successfully changed the user details.
+    `);
+      setTimeout(function () {
+        setSuccess("");
+      }, 3000);
+    }
   };
-
-  console.log(user);
 
   return (
     <div className="editPageContainer">
@@ -64,7 +68,7 @@ function EditPage() {
       </h1>
       <div className="editContainer">
         {loaded === false ? (
-          <h1>loading</h1>
+          <h1 className="editLoading">Loading...</h1>
         ) : (
           <div>
             <div className="inputContainer">
@@ -85,7 +89,7 @@ function EditPage() {
             </div>
             <div className="editButtons">
               <button className="editButton">
-                <Link className="editToHomepage" to="/">
+                <Link className="toHomepage" to="/">
                   Back
                 </Link>
               </button>
@@ -96,6 +100,8 @@ function EditPage() {
           </div>
         )}
       </div>
+      <h1 className="error">{error}</h1>
+      <h1 className="success">{success}</h1>
     </div>
   );
 }
