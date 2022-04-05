@@ -31,7 +31,7 @@ function MainPage() {
     loadUsers();
   }, []);
 
-  function nextpage() {
+  function nextPage() {
     currentPage = Number(localStorage.getItem("page"));
     if (Math.trunc(users.length / 10) + 1 === currentPage) {
     } else {
@@ -41,7 +41,7 @@ function MainPage() {
     }
   }
 
-  function previouspage() {
+  function previousPage() {
     currentPage = Number(localStorage.getItem("page"));
     if (currentPage === 1) {
     } else {
@@ -62,9 +62,9 @@ function MainPage() {
         </button>
       </div>
       <div className="paginationContainer">
-        <button onClick={previouspage}>previouspage</button>
+        <button onClick={previousPage}>previous page</button>
         <p>{currentPage}</p>
-        <button onClick={nextpage}>nextpage</button>
+        <button onClick={nextPage}>next page</button>
       </div>
       <div className="users">
         {loaded === false ? (
@@ -84,9 +84,9 @@ function MainPage() {
         )}
       </div>
       <div className="paginationContainer">
-        <button onClick={previouspage}>previouspage</button>
+        <button onClick={previousPage}>previous page</button>
         <p>{currentPage}</p>
-        <button onClick={nextpage}>nextpage</button>
+        <button onClick={nextPage}>next page</button>
       </div>
     </div>
   );
